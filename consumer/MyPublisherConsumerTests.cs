@@ -1,4 +1,3 @@
-// tests/MyPublisherConsumerTests.cs
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +24,7 @@ namespace tests
             harness.Consumer<MyConsumer>();
 
             await harness.Start();
-            
+
             publisher = new MyPublisher(harness.Bus);
         }
 
@@ -42,7 +41,7 @@ namespace tests
             const string content = "Test test";
             await publisher.Publish(content);
             ConsumeContext<MyMessage>? consumed = null;
-            
+
             foreach (var ctx in harness.Consumed.Select<MyMessage>())
             {
                 consumed = ctx.Context;
